@@ -6,14 +6,15 @@
   <title>光AIプロジェクト — Claude Code導入支援</title>
   <style>
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --border: #30363d;
-      --text: #e6edf3;
-      --text-muted: #8b949e;
-      --accent: #58a6ff;
-      --accent-hover: #79c0ff;
-      --green: #3fb950;
+      --bg: #ffffff;
+      --surface: #f6f8fa;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --text-muted: #656d76;
+      --accent: #0969da;
+      --accent-hover: #0550ae;
+      --green: #1a7f37;
+      --green-bg: #dafbe1;
       --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
     }
 
@@ -58,8 +59,8 @@
 
     .badge {
       display: inline-block;
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: var(--green-bg);
+      border: 1px solid var(--green);
       border-radius: 4px;
       padding: 0.15rem 0.5rem;
       font-size: 0.75rem;
@@ -114,10 +115,30 @@
     .code-block .value { color: var(--green); }
     .code-block .arrow { color: var(--text-muted); }
 
-    .plan {
-      display: grid;
-      gap: 1rem;
+    .message {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
       margin: 1rem 0;
+      font-size: 0.9rem;
+      line-height: 1.9;
+    }
+
+    .message p {
+      margin-bottom: 0.75rem;
+    }
+
+    .message p:last-child {
+      margin-bottom: 0;
+    }
+
+    .message .sig {
+      color: var(--text-muted);
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
     }
 
     .plan-card {
@@ -125,6 +146,7 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 1.25rem;
+      margin: 1rem 0;
     }
 
     .plan-card.free {
@@ -148,10 +170,29 @@
       font-size: 0.85rem;
     }
 
+    .plan-note {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .notice {
+      background: #fff8c5;
+      border: 1px solid #d4a72c;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.8rem;
+      color: #6a5300;
+      line-height: 1.7;
+    }
+
     .cta {
       display: inline-block;
       background: var(--accent);
-      color: var(--bg);
+      color: #ffffff;
       padding: 0.75rem 2rem;
       border-radius: 6px;
       text-decoration: none;
@@ -225,12 +266,19 @@
 
     <section>
       <h2>これは何か</h2>
-      <p>光市の企業がAI（Claude Code）を業務に導入するための無料支援プロジェクトです。</p>
+      <p>光市の企業・事業者を対象とした、AI（Claude Code）の無料導入支援プロジェクトです。</p>
       <p>遠隔で完結します。申込から導入まで最短即日。</p>
+
+      <div class="message">
+        <p>私は光市に住んでいて、普段はIT企業の経営とコンサルティング支援をしています。自分の事業でAIの導入・推進を進める中で、この技術は隣の事業者にも届けられるし、届けるべきだと考えるようになりました。</p>
+        <p>一社だけが強くなっても地域は変わりません。意欲のある企業が横につながり、同じ基盤の上で動けるようになれば、光市全体の競争力が上がる。これは私のプロジェクトではなく、参加する全員のプロジェクトです。</p>
+        <p>マネタイズが目的ではありません。小さな事業者も、始めたばかりの個人事業主も、まずは同じスタートラインに立てるようにしたい。そのための導入支援です。</p>
+        <div class="sig">谷本幹人 / Flesking合同会社 / 光市在住</div>
+      </div>
     </section>
 
     <section>
-      <h2>やること</h2>
+      <h2>導入の流れ</h2>
       <div class="code-block">
         <span class="comment">// 導入フロー</span><br>
         <span class="key">1. 申込</span> <span class="arrow">→</span> <span class="value">フォーム送信（3分）</span><br>
@@ -243,27 +291,20 @@
 
     <section>
       <h2>提供内容</h2>
-      <div class="plan">
-        <div class="plan-card free">
-          <div class="plan-name">導入支援（全企業対象）</div>
-          <div class="plan-price">¥0</div>
-          <ul>
-            <li>Claude Codeアカウント開設サポート</li>
-            <li>業務環境に合わせた初期設定ファイル生成</li>
-            <li>導入マニュアル提供</li>
-            <li>基本的な活用ガイド</li>
-          </ul>
-        </div>
-        <div class="plan-card">
-          <div class="plan-name">継続サポート（希望者）</div>
-          <div class="plan-price">¥10,000〜 /月</div>
-          <ul>
-            <li>AIヘルプデスク（質問し放題）</li>
-            <li>業種別ケーススタディ提供</li>
-            <li>業務自動化の上位設計</li>
-            <li>光市企業ネットワーク参加</li>
-          </ul>
-        </div>
+      <div class="plan-card free">
+        <div class="plan-name">導入支援</div>
+        <div class="plan-price">無料</div>
+        <ul>
+          <li>Claude Codeアカウント開設サポート</li>
+          <li>業務環境に合わせた初期設定ファイル生成</li>
+          <li>導入マニュアル提供</li>
+          <li>基本的な活用ガイド</li>
+        </ul>
+        <p class="plan-note">導入後、必要に応じて業務設計や個別の技術サポートを有償で提供することも可能です。内容・費用は状況に応じてご相談ください。</p>
+      </div>
+
+      <div class="notice">
+        現在は初期フェーズにつき、限定的に募集しています。受付状況により予告なく締め切る場合があります。提供内容も今後変更される可能性がありますのでご了承ください。
       </div>
     </section>
 
@@ -282,7 +323,7 @@
     </section>
 
     <section class="cta-section">
-      <a href="https://forms.gle/PLACEHOLDER" class="cta" id="apply-btn">$ 申し込む_</a>
+      <a href="https://forms.gle/PLACEHOLDER" class="cta" id="apply-btn">申し込む</a>
       <p class="cta-note">光市内の企業・事業者が対象です。個人事業主もOK。</p>
     </section>
 
