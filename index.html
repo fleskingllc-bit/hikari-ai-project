@@ -35,6 +35,12 @@
       padding: 2rem 1.5rem;
     }
 
+    .container-wide {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
     header {
       border-bottom: 1px solid var(--border);
       padding-bottom: 1.5rem;
@@ -140,6 +146,16 @@
       padding-top: 0.75rem;
       border-top: 1px solid var(--border);
       font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .sig-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
     .plan-card {
@@ -191,19 +207,20 @@
       line-height: 1.7;
     }
 
-    /* 声セクション - 画像ギャラリー */
+    /* Masonry gallery */
     .voices-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+      columns: 3;
+      column-gap: 1rem;
       margin: 1.5rem 0;
     }
 
     .voice-img-card {
+      break-inside: avoid;
       border: 1px solid var(--border);
       border-radius: 6px;
       overflow: hidden;
       background: var(--surface);
+      margin-bottom: 1rem;
     }
 
     .voice-img-card img {
@@ -213,10 +230,22 @@
     }
 
     .voice-img-label {
-      padding: 0.75rem 1rem;
-      font-size: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
       border-top: 1px solid var(--border);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .voices-gallery { columns: 2; }
+    }
+
+    @media (max-width: 600px) {
+      .voices-gallery { columns: 1; }
+      .container { padding: 1.5rem 1rem; }
+      .container-wide { padding: 0 1rem; }
+      h1 { font-size: 1.2rem; }
     }
 
     /* CTA */
@@ -292,11 +321,6 @@
       color: var(--accent);
       text-decoration: none;
     }
-
-    @media (max-width: 600px) {
-      .container { padding: 1.5rem 1rem; }
-      h1 { font-size: 1.2rem; }
-    }
   </style>
 </head>
 <body>
@@ -317,7 +341,10 @@
         <p>自分の事業でAIの導入・推進を進める中で、この技術は隣の事業者にも届けられるし、届けるべきだと考えるようになりました。</p>
         <p>一社だけが強くなっても地域は変わりません。意欲のある企業が横につながり、同じ基盤の上で動けるようになれば、光市全体の競争力が上がる。これは私のプロジェクトではなく、参加する全員のプロジェクトです。</p>
         <p>小さな事業者も、始めたばかりの個人事業主も、まずは同じスタートラインに立てるようにしたい。そのための導入支援です。</p>
-        <div class="sig">谷本幹人 / Flesking合同会社 / 光市在住</div>
+        <div class="sig">
+          <img src="images/avatar_tanimoto.png" alt="谷本幹人" class="sig-avatar">
+          <span>谷本幹人 / 光市在住</span>
+        </div>
       </div>
 
       <div class="cta-inline">
@@ -371,14 +398,18 @@
       <p>あなたのPC上で動き、社外にデータを保存しません。</p>
     </section>
 
-    <section>
+  </div>
+
+  <section>
+    <div class="container">
       <h2>すでに起きていること</h2>
       <p>AIエージェントを導入し始めている人たちの声。</p>
-
+    </div>
+    <div class="container-wide">
       <div class="voices-gallery">
 
         <div class="voice-img-card">
-          <img src="images/voice_hr_system.jpg" alt="Claude Codeで人事評価システムを作成した事例" loading="lazy">
+          <img src="images/voice_hr_system.jpg" alt="人事評価システムの自動構築事例" loading="lazy">
           <div class="voice-img-label">人事評価システムの自動構築 — 経営者</div>
         </div>
 
@@ -389,7 +420,7 @@
 
         <div class="voice-img-card">
           <img src="images/voice_minutes.jpg" alt="議事録作成からメール下書きまで全自動化した事例" loading="lazy">
-          <div class="voice-img-label">議事録→お礼メールまで全自動。人間がやること：送信ボタンを押すだけ — IT</div>
+          <div class="voice-img-label">議事録→お礼メールまで全自動 — IT</div>
         </div>
 
         <div class="voice-img-card">
@@ -399,17 +430,17 @@
 
         <div class="voice-img-card">
           <img src="images/voice_dashboard.jpg" alt="広告ダッシュボードの自動構築事例" loading="lazy">
-          <div class="voice-img-label">勝手に便利機能を実装。FB広告の集計も全部AIに — マーケティング / 広告運用</div>
+          <div class="voice-img-label">勝手に便利機能を実装。FB広告集計も全部AIに — マーケティング</div>
         </div>
 
         <div class="voice-img-card">
           <img src="images/voice_management.jpg" alt="経営レベルでの活用事例" loading="lazy">
-          <div class="voice-img-label">経営・マネジメント層が使いこなすと組織の生産性が爆発的に上がる — 事業開発</div>
+          <div class="voice-img-label">マネジメント層が使いこなすと生産性が爆発的に上がる — 事業開発</div>
         </div>
 
         <div class="voice-img-card">
           <img src="images/voice_agent.jpg" alt="AIエージェント活用事例" loading="lazy">
-          <div class="voice-img-label">使ってる人だけ完全に突き抜ける。この動きは不可逆 — 起業家</div>
+          <div class="voice-img-label">使ってる人だけ完全に突き抜ける。不可逆 — 起業家</div>
         </div>
 
         <div class="voice-img-card">
@@ -418,8 +449,11 @@
         </div>
 
       </div>
-      <p style="font-size: 0.75rem; color: var(--text-muted);">※ SNS上の公開投稿より引用。個人を特定できる情報は加工しています。</p>
-    </section>
+      <p style="font-size: 0.7rem; color: var(--text-muted); max-width: 720px; margin: 0 auto;">※ SNS上の公開投稿より引用。個人を特定できる情報は加工しています。</p>
+    </div>
+  </section>
+
+  <div class="container">
 
     <section class="cta-section">
       <a href="https://forms.gle/PLACEHOLDER" class="cta">無料で導入する — 受付中</a>
@@ -448,8 +482,7 @@
     </section>
 
     <footer>
-      <p>光AIプロジェクト — 運営: <a href="https://github.com/fleskingllc-bit">Flesking合同会社</a></p>
-      <p>山口県光市 / 谷本幹人</p>
+      <p>光AIプロジェクト / 山口県光市 / 谷本幹人</p>
       <p>Instagram: <a href="https://www.instagram.com/mikitotanimoto/">@mikitotanimoto</a></p>
     </footer>
 
