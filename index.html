@@ -7,14 +7,15 @@
   <style>
     :root {
       --bg: #ffffff;
-      --surface: #f6f8fa;
-      --border: #d0d7de;
-      --text: #1f2328;
-      --text-muted: #656d76;
-      --accent: #0969da;
-      --accent-hover: #0550ae;
-      --green: #1a7f37;
-      --green-bg: #dafbe1;
+      --surface: #faf6f1;
+      --border: #e8ddd0;
+      --text: #2c2416;
+      --text-muted: #8a7d6b;
+      --accent: #d4772c;
+      --accent-hover: #b8621e;
+      --accent-light: #f5e6d5;
+      --green: #6b8a3e;
+      --green-bg: #eef3e4;
       --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
     }
 
@@ -179,31 +180,62 @@
     }
 
     .notice {
-      background: #fff8c5;
-      border: 1px solid #d4a72c;
-      border-radius: 6px;
+      background: #fef9ef;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
       padding: 1rem 1.25rem;
       margin: 1.5rem 0;
       font-size: 0.8rem;
-      color: #6a5300;
+      color: var(--text-muted);
       line-height: 1.7;
     }
 
+    /* 声セクション - 画像ギャラリー */
+    .voices-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .voice-img-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .voice-img-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .voice-img-label {
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* CTA */
     .cta {
       display: inline-block;
       background: var(--accent);
       color: #ffffff;
-      padding: 0.75rem 2rem;
+      padding: 0.85rem 2.5rem;
       border-radius: 6px;
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
       font-family: var(--mono);
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.1s;
     }
 
     .cta:hover {
       background: var(--accent-hover);
+      transform: translateY(-1px);
     }
 
     .cta-section {
@@ -214,10 +246,22 @@
       margin: 2rem 0;
     }
 
+    .cta-inline {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
     .cta-note {
       color: var(--text-muted);
       font-size: 0.8rem;
       margin-top: 0.75rem;
+    }
+
+    .cta-urgency {
+      color: var(--accent);
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      font-weight: 600;
     }
 
     .faq dt {
@@ -270,10 +314,15 @@
       <p>遠隔で完結します。申込から導入まで最短即日。</p>
 
       <div class="message">
-        <p>私は光市に住んでいて、普段はIT企業の経営とコンサルティング支援をしています。自分の事業でAIの導入・推進を進める中で、この技術は隣の事業者にも届けられるし、届けるべきだと考えるようになりました。</p>
+        <p>私は光市に住んでいて、ITベンチャーから独立し、現在は小売D2Cなど数社の企業経営とデザインコンサルティング支援をしています。自分の事業でAIの導入・推進を進める中で、この技術は隣の事業者にも届けられるし、届けるべきだと考えるようになりました。</p>
         <p>一社だけが強くなっても地域は変わりません。意欲のある企業が横につながり、同じ基盤の上で動けるようになれば、光市全体の競争力が上がる。これは私のプロジェクトではなく、参加する全員のプロジェクトです。</p>
-        <p>マネタイズが目的ではありません。小さな事業者も、始めたばかりの個人事業主も、まずは同じスタートラインに立てるようにしたい。そのための導入支援です。</p>
+        <p>小さな事業者も、始めたばかりの個人事業主も、まずは同じスタートラインに立てるようにしたい。そのための導入支援です。</p>
         <div class="sig">谷本幹人 / Flesking合同会社 / 光市在住</div>
+      </div>
+
+      <div class="cta-inline">
+        <a href="https://forms.gle/PLACEHOLDER" class="cta">無料で導入する — 受付中</a>
+        <p class="cta-urgency">初期フェーズにつき受入数に限りがあります</p>
       </div>
     </section>
 
@@ -310,7 +359,7 @@
 
     <section>
       <h2>Claude Codeとは</h2>
-      <p>Anthropic社が提供するAIアシスタント。ターミナルから直接、以下のようなことができます：</p>
+      <p>Anthropic社が提供するAIアシスタント。ターミナルから直接、自然言語で業務を指示できます。</p>
       <div class="code-block">
         <span class="comment">// 例：こんなことを自然言語で指示できる</span><br><br>
         <span class="value">"今月の売上データをまとめて"</span><br>
@@ -322,9 +371,70 @@
       <p>あなたのPC上で動き、社外にデータを保存しません。</p>
     </section>
 
+    <section>
+      <h2>すでに起きていること</h2>
+      <p>Claude Codeを導入した人たちの声をそのまま紹介します。</p>
+
+      <div class="voices-gallery">
+
+        <div class="voice-img-card">
+          <img src="images/voice_hr_system.jpg" alt="Claude Codeで人事評価システムを作成した事例" loading="lazy">
+          <div class="voice-img-label">人事評価システムの自動構築 — 経営者</div>
+        </div>
+
+        <div class="voice-img-card">
+          <img src="images/voice_slides.jpg" alt="80枚のスライドを半日で自動生成した事例" loading="lazy">
+          <div class="voice-img-label">80枚のスライドをプロンプトだけで完成 — 士業</div>
+        </div>
+
+        <div class="voice-img-card">
+          <img src="images/voice_minutes.jpg" alt="議事録作成からメール下書きまで全自動化した事例" loading="lazy">
+          <div class="voice-img-label">議事録→お礼メールまで全自動。人間がやること：送信ボタンを押すだけ — IT</div>
+        </div>
+
+        <div class="voice-img-card">
+          <img src="images/voice_video.jpg" alt="映像編集の効率化事例" loading="lazy">
+          <div class="voice-img-label">手作業の10倍の効率で映像編集 — 映像制作</div>
+        </div>
+
+        <div class="voice-img-card">
+          <img src="images/voice_dashboard.jpg" alt="広告ダッシュボードの自動構築事例" loading="lazy">
+          <div class="voice-img-label">言及していない機能まで勝手に実装してきた — マーケティング</div>
+        </div>
+
+        <div class="voice-img-card">
+          <img src="images/voice_management.jpg" alt="経営レベルでの活用事例" loading="lazy">
+          <div class="voice-img-label">経営・マネジメント層が使いこなすと組織の生産性が爆発的に上がる — 事業開発</div>
+        </div>
+
+        <div class="voice-img-card">
+          <img src="images/voice_agent.jpg" alt="AIエージェント活用事例" loading="lazy">
+          <div class="voice-img-label">使ってる人だけ完全に突き抜ける。この動きは不可逆 — 起業家</div>
+        </div>
+
+        <div class="voice-img-card">
+          <img src="images/voice_fb_ads_full.jpg" alt="FB広告集計の自動化事例" loading="lazy">
+          <div class="voice-img-label">FB広告の集計をAIに全部やってもらった — 広告運用</div>
+        </div>
+
+        <div class="voice-img-card">
+          <img src="images/voice_value.jpg" alt="月額$100で5〜10倍の時間価値" loading="lazy">
+          <div class="voice-img-label">$100が5倍も10倍もの時間価値を生み出す — 利用者</div>
+        </div>
+
+        <div class="voice-img-card">
+          <img src="images/voice_obara.jpg" alt="ビジネス活用格差について" loading="lazy">
+          <div class="voice-img-label">ビジネス活用してない方マジ格差 — ジャーナリスト</div>
+        </div>
+
+      </div>
+      <p style="font-size: 0.75rem; color: var(--text-muted);">※ SNS上の公開投稿より引用。個人を特定できる情報は加工しています。</p>
+    </section>
+
     <section class="cta-section">
-      <a href="https://forms.gle/PLACEHOLDER" class="cta" id="apply-btn">申し込む</a>
+      <a href="https://forms.gle/PLACEHOLDER" class="cta">無料で導入する — 受付中</a>
       <p class="cta-note">光市内の企業・事業者が対象です。個人事業主もOK。</p>
+      <p class="cta-urgency">この差は開いたら埋まりません。今が始めどきです。</p>
     </section>
 
     <section>
@@ -350,7 +460,7 @@
     <footer>
       <p>光AIプロジェクト — 運営: <a href="https://github.com/fleskingllc-bit">Flesking合同会社</a></p>
       <p>山口県光市 / 谷本幹人</p>
-      <p>お問い合わせ: flesking.llc@gmail.com</p>
+      <p>Instagram: <a href="https://www.instagram.com/mikitotanimoto/">@mikitotanimoto</a></p>
     </footer>
 
   </div>
