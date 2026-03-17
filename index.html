@@ -20,6 +20,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--mono);
@@ -710,6 +711,7 @@
 
         <div class="form-submit">
           <button type="submit" class="cta">送信する</button>
+          <p class="cta-urgency">初期フェーズにつき受入数に限りがあります</p>
           <p class="cta-note" id="form-status"></p>
         </div>
       </form>
