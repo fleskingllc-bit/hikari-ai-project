@@ -321,6 +321,105 @@
       color: var(--accent);
       text-decoration: none;
     }
+
+    /* Form styles */
+    .hikari-form fieldset {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hikari-form legend {
+      color: var(--accent);
+      font-weight: 600;
+      padding: 0 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .hikari-form label {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .hikari-form input[type="text"],
+    .hikari-form input[type="email"],
+    .hikari-form input[type="tel"],
+    .hikari-form select,
+    .hikari-form textarea {
+      display: block;
+      width: 100%;
+      margin-top: 0.25rem;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      background: var(--bg);
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .hikari-form input:focus,
+    .hikari-form select:focus,
+    .hikari-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .hikari-form textarea {
+      resize: vertical;
+    }
+
+    .req {
+      color: var(--accent);
+      margin-left: 0.25rem;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .radio-group, .check-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .hikari-form label.radio,
+    .hikari-form label.check {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .hikari-form label.radio input,
+    .hikari-form label.check input {
+      margin: 0;
+      accent-color: var(--accent);
+    }
+
+    .form-submit {
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    .form-submit button {
+      border: none;
+      cursor: pointer;
+      font-family: var(--mono);
+    }
+
+    .form-submit button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -348,7 +447,7 @@
       </div>
 
       <div class="cta-inline">
-        <a href="https://forms.gle/PLACEHOLDER" class="cta">無料で導入する — 受付中</a>
+        <a href="#apply" class="cta">無料で導入する — 受付中</a>
         <p class="cta-urgency">初期フェーズにつき受入数に限りがあります</p>
       </div>
     </section>
@@ -476,10 +575,144 @@
 
   <div class="container">
 
-    <section class="cta-section">
-      <a href="https://forms.gle/PLACEHOLDER" class="cta">無料で導入する — 受付中</a>
-      <p class="cta-note">光市内の企業・事業者が対象です。個人事業主もOK。</p>
-      <p class="cta-urgency">初期フェーズにつき受入数に限りがあります</p>
+    <section id="apply">
+      <h2>申し込む</h2>
+      <p>光市内の企業・事業者が対象です。個人事業主もOK。</p>
+      <p class="cta-urgency" style="margin-bottom: 1.5rem;">初期フェーズにつき受入数に限りがあります</p>
+
+      <form id="hikari-form" class="hikari-form">
+        <fieldset>
+          <legend>基本情報</legend>
+          <label>会社名（屋号）<span class="req">*</span><input type="text" name="company" required></label>
+          <label>担当者名<span class="req">*</span><input type="text" name="name" required></label>
+          <label>メールアドレス<span class="req">*</span><input type="email" name="email" required></label>
+          <label>電話番号<span class="req">*</span><input type="tel" name="phone" required></label>
+          <label>光市内の所在地（町名まで）<span class="req">*</span><input type="text" name="location" required></label>
+          <label>業種<span class="req">*</span>
+            <select name="industry" required>
+              <option value="">選択してください</option>
+              <option>製造業</option><option>建設業</option><option>小売業</option>
+              <option>飲食業</option><option>サービス業</option><option>医療・福祉</option>
+              <option>士業（税理士・社労士等）</option><option>不動産業</option>
+              <option>IT・通信</option><option>農林水産業</option><option>その他</option>
+            </select>
+          </label>
+          <label>従業員数<span class="req">*</span>
+            <select name="employees" required>
+              <option value="">選択してください</option>
+              <option>1人（個人事業主）</option><option>2〜5人</option><option>6〜20人</option>
+              <option>21〜50人</option><option>51〜100人</option><option>101人以上</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>担当者について</legend>
+          <div class="radio-group">
+            <span class="field-label">担当者の業務範囲<span class="req">*</span></span>
+            <label class="radio"><input type="radio" name="role" value="経営・代表" required>経営・代表</label>
+            <label class="radio"><input type="radio" name="role" value="管理部門（総務・経理・人事等）">管理部門（総務・経理・人事等）</label>
+            <label class="radio"><input type="radio" name="role" value="営業・マーケティング">営業・マーケティング</label>
+            <label class="radio"><input type="radio" name="role" value="現場（製造・サービス提供等）">現場（製造・サービス提供等）</label>
+            <label class="radio"><input type="radio" name="role" value="その他">その他</label>
+          </div>
+          <div class="radio-group">
+            <span class="field-label">PCスキルの自己評価<span class="req">*</span></span>
+            <label class="radio"><input type="radio" name="skill" value="基本操作（メール・ブラウザ）程度" required>基本操作（メール・ブラウザ）程度</label>
+            <label class="radio"><input type="radio" name="skill" value="Excel・スプレッドシートを日常的に使う">Excel・スプレッドシートを日常的に使う</label>
+            <label class="radio"><input type="radio" name="skill" value="業務システムの設定変更ができる">業務システムの設定変更ができる</label>
+            <label class="radio"><input type="radio" name="skill" value="プログラミング経験がある">プログラミング経験がある</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>社内ツール環境</legend>
+          <div class="check-group">
+            <span class="field-label">社内メールツール<span class="req">*</span></span>
+            <label class="check"><input type="checkbox" name="mail_tool" value="Gmail（Google Workspace）">Gmail（Google Workspace）</label>
+            <label class="check"><input type="checkbox" name="mail_tool" value="Outlook（Microsoft 365）">Outlook（Microsoft 365）</label>
+            <label class="check"><input type="checkbox" name="mail_tool" value="Yahoo!メール">Yahoo!メール</label>
+            <label class="check"><input type="checkbox" name="mail_tool" value="その他">その他</label>
+            <label class="check"><input type="checkbox" name="mail_tool" value="特になし">特になし</label>
+          </div>
+          <div class="check-group">
+            <span class="field-label">社内チャットツール<span class="req">*</span></span>
+            <label class="check"><input type="checkbox" name="chat_tool" value="Google Chat">Google Chat</label>
+            <label class="check"><input type="checkbox" name="chat_tool" value="Microsoft Teams">Microsoft Teams</label>
+            <label class="check"><input type="checkbox" name="chat_tool" value="Slack">Slack</label>
+            <label class="check"><input type="checkbox" name="chat_tool" value="LINE WORKS">LINE WORKS</label>
+            <label class="check"><input type="checkbox" name="chat_tool" value="Chatwork">Chatwork</label>
+            <label class="check"><input type="checkbox" name="chat_tool" value="特になし">特になし</label>
+          </div>
+          <div class="check-group">
+            <span class="field-label">会計・経理ツール<span class="req">*</span></span>
+            <label class="check"><input type="checkbox" name="accounting_tool" value="freee">freee</label>
+            <label class="check"><input type="checkbox" name="accounting_tool" value="マネーフォワード">マネーフォワード</label>
+            <label class="check"><input type="checkbox" name="accounting_tool" value="弥生会計">弥生会計</label>
+            <label class="check"><input type="checkbox" name="accounting_tool" value="勘定奉行">勘定奉行</label>
+            <label class="check"><input type="checkbox" name="accounting_tool" value="Excel管理">Excel管理</label>
+            <label class="check"><input type="checkbox" name="accounting_tool" value="税理士に任せている">税理士に任せている</label>
+            <label class="check"><input type="checkbox" name="accounting_tool" value="その他">その他</label>
+          </div>
+          <div class="check-group">
+            <span class="field-label">社内ファイル共有ツール<span class="req">*</span></span>
+            <label class="check"><input type="checkbox" name="file_tool" value="Google Drive">Google Drive</label>
+            <label class="check"><input type="checkbox" name="file_tool" value="OneDrive・SharePoint">OneDrive・SharePoint</label>
+            <label class="check"><input type="checkbox" name="file_tool" value="Dropbox">Dropbox</label>
+            <label class="check"><input type="checkbox" name="file_tool" value="Box">Box</label>
+            <label class="check"><input type="checkbox" name="file_tool" value="社内サーバー">社内サーバー</label>
+            <label class="check"><input type="checkbox" name="file_tool" value="USBメモリ・紙">USBメモリ・紙</label>
+            <label class="check"><input type="checkbox" name="file_tool" value="特になし">特になし</label>
+          </div>
+          <div class="check-group">
+            <span class="field-label">受発注・顧客管理ツール<span class="req">*</span></span>
+            <label class="check"><input type="checkbox" name="order_tool" value="専用業務システム">専用業務システム</label>
+            <label class="check"><input type="checkbox" name="order_tool" value="Salesforce">Salesforce</label>
+            <label class="check"><input type="checkbox" name="order_tool" value="kintone">kintone</label>
+            <label class="check"><input type="checkbox" name="order_tool" value="Excel・スプレッドシート管理">Excel・スプレッドシート管理</label>
+            <label class="check"><input type="checkbox" name="order_tool" value="紙・FAX">紙・FAX</label>
+            <label class="check"><input type="checkbox" name="order_tool" value="特になし">特になし</label>
+          </div>
+          <div class="radio-group">
+            <span class="field-label">PC環境<span class="req">*</span></span>
+            <label class="radio"><input type="radio" name="pc_os" value="Windows" required>Windows</label>
+            <label class="radio"><input type="radio" name="pc_os" value="Mac">Mac</label>
+            <label class="radio"><input type="radio" name="pc_os" value="両方ある">両方ある</label>
+            <label class="radio"><input type="radio" name="pc_os" value="わからない">わからない</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>AIでやりたいこと</legend>
+          <div class="check-group">
+            <span class="field-label">取り組みたいこと（複数選択可）<span class="req">*</span></span>
+            <label class="check"><input type="checkbox" name="ai_goals" value="書類・報告書の作成補助">書類・報告書の作成補助</label>
+            <label class="check"><input type="checkbox" name="ai_goals" value="メール文面の作成">メール文面の作成</label>
+            <label class="check"><input type="checkbox" name="ai_goals" value="データの集計・分析">データの集計・分析</label>
+            <label class="check"><input type="checkbox" name="ai_goals" value="議事録の作成・要約">議事録の作成・要約</label>
+            <label class="check"><input type="checkbox" name="ai_goals" value="マニュアル・手順書の整備">マニュアル・手順書の整備</label>
+            <label class="check"><input type="checkbox" name="ai_goals" value="顧客対応の効率化">顧客対応の効率化</label>
+            <label class="check"><input type="checkbox" name="ai_goals" value="SNS・ブログの発信">SNS・ブログの発信</label>
+            <label class="check"><input type="checkbox" name="ai_goals" value="経理・請求書処理の効率化">経理・請求書処理の効率化</label>
+            <label class="check"><input type="checkbox" name="ai_goals" value="社内情報の整理・検索">社内情報の整理・検索</label>
+            <label class="check"><input type="checkbox" name="ai_goals" value="業務の自動化全般">業務の自動化全般</label>
+            <label class="check"><input type="checkbox" name="ai_goals" value="その他">その他</label>
+          </div>
+          <label>具体的にやりたいこと・困っていること（自由記述）<textarea name="ai_freetext" rows="4"></textarea></label>
+          <label>この取り組みをどこで知りましたか？<span class="req">*</span>
+            <select name="referral" required>
+              <option value="">選択してください</option>
+              <option>X（Twitter）</option><option>Instagram</option><option>Facebook</option>
+              <option>知人の紹介</option><option>商工会議所</option><option>その他</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <div class="form-submit">
+          <button type="submit" class="cta">送信する</button>
+          <p class="cta-note" id="form-status"></p>
+        </div>
+      </form>
     </section>
 
     <section>
@@ -508,5 +741,50 @@
     </footer>
 
   </div>
+<script>
+const GAS_URL = "YOUR_GAS_WEB_APP_URL";
+
+document.getElementById("hikari-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector("button[type=submit]");
+  const status = document.getElementById("form-status");
+  btn.disabled = true;
+  btn.textContent = "送信中...";
+  status.textContent = "";
+
+  const fd = new FormData(this);
+  const data = {};
+  for (const [k, v] of fd.entries()) {
+    if (data[k]) {
+      if (Array.isArray(data[k])) data[k].push(v);
+      else data[k] = [data[k], v];
+    } else {
+      data[k] = v;
+    }
+  }
+  // Ensure checkbox fields are arrays
+  ["mail_tool","chat_tool","accounting_tool","file_tool","order_tool","ai_goals"].forEach(k => {
+    if (!data[k]) data[k] = [];
+    else if (!Array.isArray(data[k])) data[k] = [data[k]];
+  });
+
+  try {
+    await fetch(GAS_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+    });
+    status.textContent = "送信完了しました。ありがとうございます！";
+    status.style.color = "var(--green)";
+    this.reset();
+  } catch(err) {
+    status.textContent = "送信に失敗しました。時間をおいて再度お試しください。";
+    status.style.color = "var(--accent)";
+  }
+  btn.disabled = false;
+  btn.textContent = "送信する";
+});
+</script>
 </body>
 </html>
