@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光AIプロジェクト — Claude Code導入支援</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-hover: #79c0ff;
+      --green: #3fb950;
+      --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--mono);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    h1 span {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.75rem;
+      color: var(--green);
+      margin-top: 0.75rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    h2::before {
+      content: "## ";
+      color: var(--accent);
+    }
+
+    p, li {
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li::before {
+      content: "- ";
+      color: var(--accent);
+    }
+
+    .code-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    .code-block .comment { color: var(--text-muted); }
+    .code-block .key { color: var(--accent); }
+    .code-block .value { color: var(--green); }
+    .code-block .arrow { color: var(--text-muted); }
+
+    .plan {
+      display: grid;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .plan-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+    }
+
+    .plan-card.free {
+      border-color: var(--green);
+    }
+
+    .plan-name {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .plan-price {
+      color: var(--green);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .plan-card ul li {
+      font-size: 0.85rem;
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      font-family: var(--mono);
+      transition: background 0.2s;
+    }
+
+    .cta:hover {
+      background: var(--accent-hover);
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    .cta-note {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 0.75rem;
+    }
+
+    .faq dt {
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .faq dt::before {
+      content: "Q: ";
+    }
+
+    .faq dd {
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--border);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      margin-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 1.5rem 1rem; }
+      h1 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1>光AIプロジェクト <span>/ hikari-ai</span></h1>
+      <p class="tagline">Claude Code導入支援 — 山口県光市限定</p>
+      <span class="badge">&#x2713; 無料導入</span>
+    </header>
+
+    <section>
+      <h2>これは何か</h2>
+      <p>光市の企業がAI（Claude Code）を業務に導入するための無料支援プロジェクトです。</p>
+      <p>遠隔で完結します。申込から導入まで最短即日。</p>
+    </section>
+
+    <section>
+      <h2>やること</h2>
+      <div class="code-block">
+        <span class="comment">// 導入フロー</span><br>
+        <span class="key">1. 申込</span> <span class="arrow">→</span> <span class="value">フォーム送信（3分）</span><br>
+        <span class="key">2. ヒアリング</span> <span class="arrow">→</span> <span class="value">業務環境・ツールの把握</span><br>
+        <span class="key">3. 設計</span> <span class="arrow">→</span> <span class="value">あなたの会社専用の初期設定を作成</span><br>
+        <span class="key">4. 導入</span> <span class="arrow">→</span> <span class="value">マニュアルに沿ってセットアップ</span><br>
+        <span class="key">5. 開始</span> <span class="arrow">→</span> <span class="value">Claude Codeが動き始める</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>提供内容</h2>
+      <div class="plan">
+        <div class="plan-card free">
+          <div class="plan-name">導入支援（全企業対象）</div>
+          <div class="plan-price">¥0</div>
+          <ul>
+            <li>Claude Codeアカウント開設サポート</li>
+            <li>業務環境に合わせた初期設定ファイル生成</li>
+            <li>導入マニュアル提供</li>
+            <li>基本的な活用ガイド</li>
+          </ul>
+        </div>
+        <div class="plan-card">
+          <div class="plan-name">継続サポート（希望者）</div>
+          <div class="plan-price">¥10,000〜 /月</div>
+          <ul>
+            <li>AIヘルプデスク（質問し放題）</li>
+            <li>業種別ケーススタディ提供</li>
+            <li>業務自動化の上位設計</li>
+            <li>光市企業ネットワーク参加</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Claude Codeとは</h2>
+      <p>Anthropic社が提供するAIアシスタント。ターミナルから直接、以下のようなことができます：</p>
+      <div class="code-block">
+        <span class="comment">// 例：こんなことを自然言語で指示できる</span><br><br>
+        <span class="value">"今月の売上データをまとめて"</span><br>
+        <span class="value">"この契約書をレビューして"</span><br>
+        <span class="value">"取引先へのメール下書きを作って"</span><br>
+        <span class="value">"Googleスプレッドシートを整理して"</span><br>
+        <span class="value">"社内マニュアルを作って"</span><br>
+      </div>
+      <p>あなたのPC上で動き、社外にデータを保存しません。</p>
+    </section>
+
+    <section class="cta-section">
+      <a href="https://forms.gle/PLACEHOLDER" class="cta" id="apply-btn">$ 申し込む_</a>
+      <p class="cta-note">光市内の企業・事業者が対象です。個人事業主もOK。</p>
+    </section>
+
+    <section>
+      <h2>FAQ</h2>
+      <dl class="faq">
+        <dt>費用はかかりますか？</dt>
+        <dd>導入支援は無料です。Claude Code自体のAPI利用料（月数百円〜数千円程度）は各社ご負担ください。</dd>
+
+        <dt>ITに詳しくなくても大丈夫ですか？</dt>
+        <dd>はい。環境に合わせたマニュアルを個別に作成します。</dd>
+
+        <dt>何が必要ですか？</dt>
+        <dd>PCとインターネット接続のみ。Windows / Mac どちらもOK。</dd>
+
+        <dt>光市外の企業ですが申し込めますか？</dt>
+        <dd>現在は光市内の企業・事業者に限定しています。</dd>
+
+        <dt>データのセキュリティは？</dt>
+        <dd>Claude Codeはお手元のPC上で動作します。データは外部サーバーに保存されません。</dd>
+      </dl>
+    </section>
+
+    <footer>
+      <p>光AIプロジェクト — 運営: <a href="https://github.com/fleskingllc-bit">Flesking合同会社</a></p>
+      <p>山口県光市 / 谷本幹人</p>
+      <p>お問い合わせ: flesking.llc@gmail.com</p>
+    </footer>
+
+  </div>
+</body>
+</html>
